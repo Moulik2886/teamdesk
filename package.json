@@ -1,0 +1,26 @@
+{
+  "name": "teamdesk",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "node ./server/dev.js",
+    "dev:stack": "concurrently -k -n api,web -c cyan,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev --workspace @teamdesk/server",
+    "dev:web": "npm run dev --workspace @teamdesk/client",
+    "test:api": "npm run test:api --workspace @teamdesk/server",
+    "build": "npm run build --workspace @teamdesk/client",
+    "start": "npm run start --workspace @teamdesk/server"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.10",
+    "@electric-sql/pglite-socket": "^0.2.13",
+    "concurrently": "^9.2.1"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}
